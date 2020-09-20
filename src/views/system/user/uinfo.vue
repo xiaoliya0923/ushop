@@ -101,13 +101,14 @@ mounted(){
                 // 添加管理员
                 if(this.info.isAdd){
                     res = await adduser(this.userinfo);
-                    console.log(res)
+                    // console.log(res)
                 }else{
                     // 修改管理员
                     res = await edituser(this.userinfo);
-                    console.log(res);
+                    // console.log(res);
                 }
                 if(res.code == 200){
+                    // console.log(res)
                     this.$message.success(res.msg)
                     this.info.isShow = false;
                     this.getuserlists();

@@ -1,4 +1,6 @@
+import {getcategorylist} from '@/request/category'
 export default {
+    namespaced:true,
     state:{
         categorylist:[]
     },
@@ -11,9 +13,10 @@ export default {
         }
     },
     actions:{
-        async getcategorylist({commit},data){
-            await getcategorylist();
-            commit('GETCATEGORYLIST',data)
-        }
+        async getcategorylists({commit}){
+            let res = await getcategorylist();
+            console.log(res)
+            commit('GETCATEGORYLIST',res)
+        } 
     }
 }

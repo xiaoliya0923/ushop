@@ -9,6 +9,8 @@ import menu from './module/menu'
 import role from './module/role'
 import user from './module/user'
 import category from './module/category'
+import spece from './module/spece'
+import goods from './module/goods'
  let store = new Vuex.Store({
      state:{
         iscollpase:false, //侧边栏是否折叠
@@ -27,7 +29,7 @@ import category from './module/category'
         
      },
      modules:{
-        menu,role,user,category
+        menu,role,user,category,spece,goods
      }
  })
  export default store

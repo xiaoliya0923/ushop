@@ -1,18 +1,85 @@
 <!-- 后台首页 -->
 <template>
  <div>
-     后台首页
+     <h1>后台首页</h1>
+     <v-charts class="box" :options="t1data"></v-charts>
+     <v-charts class="box" :options="t2data"></v-charts>
  </div>
 </template>
 
 <script>
+import ECharts from 'vue-echarts';
+import "echarts/lib/chart/pie";
+import "echarts/lib/chart/bar";
+import "echarts/lib/component/polar";
+
+let t1data = {
+    tooltip:{
+        trigger:'item',
+        formatter:'{a}<br/>{b}:{c}({d}%)',
+    },
+    series:[
+        {
+            name:'访问来源',
+            type:'pie',
+            label:{
+                formatter:'{b}:{c}({d}%)'
+            },
+            emphasis:{
+                label:{
+                    show:true,
+                },
+                itemStyle:{
+                     shadowBlur: 10,
+                    shadowOffsetX: 0,
+                    shadowColor: "rgba(0, 0, 0, 0.5)",
+                }
+            },
+            data:[
+
+            ]
+        }
+        
+    ]
+
+}
+let t2data = {
+    xAxis:{
+        type:'category',
+        data:['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+    },
+    yAxis:{
+        type:'value'
+    },
+    series:[{
+        data:[],
+        type:'bar'
+    }]
+}
+
 export default {
  data () {
- return {
- };
+    return {
+        t1data:t1data,
+        t2data:{}
+    };
  },
-
- components: {},
+    created(){
+        setTimeout(()=>{
+            this.t1data.series[0].data = [
+                { value: 335, name: '直接访问',itemStyle:{color:'black'} },
+                { value: 310, name: '邮件营销', itemStyle: { color: 'orange' } },
+                { value: 234, name: '联盟广告', itemStyle: { color: 'pink' } },
+                { value: 135, name: '视频广告', itemStyle: { color: 'blue' } },
+                { value: 1548, name: '搜索引擎', itemStyle: { color: 'green' } }
+            ]
+            t2data.series[0].data = [120, 200, 150, 80, 70, 110, 130]
+            this.t2data = t2data
+        },2000)
+    },
+ components: {
+     'v-charts':ECharts
+ },
 
  computed: {},
 
@@ -21,4 +88,11 @@ export default {
 
 </script>
 <style scoped>
+.box {
+    width: 500px;
+    height:250px;
+    display:inline-block;
+    background-color:#fff;
+    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.3);
+}
 </style>

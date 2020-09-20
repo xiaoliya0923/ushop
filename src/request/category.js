@@ -1,8 +1,8 @@
 import $axios from '@/common/http'
 
 // 列表
- export function getcategorylist(){
-    let res = $axios.get('/catelist');
+ export async function getcategorylist(){
+    let res = await $axios.get('/catelist?istree=1');
     if(res.code==200 && res.list){
         return res.list
     }else{
@@ -13,15 +13,15 @@ import $axios from '@/common/http'
 
 //  添加
 export function addcategory(data){
-    $axios.post('/cateadd',data)
+   return $axios.post('/cateadd',data)
 }
 
 // 修改
 export function editcategory(data){
-    $axios.post('/cateedit',data)
+    return $axios.post('/cateedit',data)
 }
 
 // 删除
 export function delcategory(id){
-    $axios.post('/catedelete',{id});
+   return $axios.post('/catedelete',{id});
 }

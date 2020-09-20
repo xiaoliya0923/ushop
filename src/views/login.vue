@@ -33,7 +33,7 @@ export default {
  data () {
     return {
         forminfo:{
-            username:'曹梦华',
+            username:'oxygen',
             password:'1234'
         },
         rules:{

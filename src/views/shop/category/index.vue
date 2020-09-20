@@ -2,8 +2,8 @@
 <template>
  <div>
      <el-button type="primary" @click="add">添加商品分类</el-button>
-     <clist></clist>
-     <cinfo :info="info"></cinfo>
+     <clist @toggle="toggle"></clist>
+     <cinfo :info="info" ref="form"></cinfo>
  </div>
 </template>
 
@@ -11,7 +11,7 @@
 import clist from './clist'
 import cinfo from './cinfo'
 export default {
- data () {
+ data () {  
  return {
      info:{
          isAdd:false,
@@ -32,6 +32,11 @@ export default {
          this.info.isShow = true;
          this.info.isAdd = true;
      },
+     toggle(data){
+         this.info.isAdd = false;
+         this.info.isShow = true;
+         this.$refs.form.setinfo(data)
+     }
  }
 }
 
