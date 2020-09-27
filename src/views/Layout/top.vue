@@ -47,7 +47,7 @@
                     <i class="el-icon-full-screen"></i>
                    {{isfull?'退出全屏':'进入全屏'}}
                 </el-dropdown-item>
-                <el-dropdown-item @click.native="EXIT">
+                <el-dropdown-item @click.native="exit">
                     <i class="el-icon-switch-button"></i>
                     退出登录
                 </el-dropdown-item>
@@ -59,7 +59,7 @@
 </template>
 
 <script>
-import {mapState,mapMutations, mapGetters} from 'vuex'
+import {mapState,mapMutations, mapGetters, mapActions} from 'vuex'
 import screenfull from 'screenfull'
 export default {
  data () {
@@ -86,6 +86,9 @@ export default {
       ...mapMutations({
           TOGGLE:'TOGGLE',
         EXIT:'user/EXIT'      
+    }),
+    ...mapActions({
+        exit:'user/exit'
     }),
     // 退出全屏
     escfullscreen(){

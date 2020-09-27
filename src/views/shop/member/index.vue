@@ -1,20 +1,38 @@
 <!-- 会员管理 -->
 <template>
- <div>会员管理</div>
+ <div>
+     <minfo :info="info" ref="form"></minfo>
+     <mlist @openinfo="openinfo"></mlist>
+ </div>
 </template>
 
 <script>
+import minfo from './minfo'
+import mlist from './mlist'
 export default {
  data () {
  return {
+     info:{
+         isShow:false
+     }
  };
  },
 
- components: {},
+ components: {
+     minfo,mlist
+ },
 
  computed: {},
 
- methods: {}
+ methods: {
+     edit(){
+
+     },
+     openinfo(val){
+         this.info.isShow =true;
+         this.$refs.form.setinfo(val)
+     }
+ }
 }
 
 </script>

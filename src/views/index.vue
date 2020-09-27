@@ -1,6 +1,6 @@
 <!-- 后台首页 -->
 <template>
- <div>
+ <div class="main">
      <h1>后台首页</h1>
      <v-charts class="box" :options="t1data"></v-charts>
      <v-charts class="box" :options="t2data"></v-charts>
@@ -95,4 +95,5 @@ export default {
     background-color:#fff;
     box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.3);
 }
+
 </style>

@@ -4,7 +4,7 @@ export default {
     namespaced:true,
     state:{
         specslist:[],
-        size:10,
+        size:1,
         page:1,
         allspecslist:0
     },

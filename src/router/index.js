@@ -17,6 +17,11 @@ let router =  new Router({
       meta:{title:'登录'}
     },
     {
+      path:'/reg',
+      component:()=>import('@/views/reg'),
+      meta:{title:'注册'}
+    },
+    {
       path:'/',
       component:()=>import('@/views/Layout'),
       meta:{title:'xx管理系统'},
@@ -82,8 +87,12 @@ let router =  new Router({
 
 
 router.beforeEach((to,from,next)=>{
-  // 判断要去的是不是登录页
-  if(to.path == '/login'){
+  // 判断要去的是不是注册页
+  if(to.path == '/reg'){
+    document.title = to.meta.title;
+    next()
+  }else if(to.path == '/login'){
+    // 判断要去的是不是登录页
     document.title = to.meta.title;
     next()
   }else{

@@ -14,7 +14,19 @@ export async function getgoodslist(page=1,size=10){
         return []
     }
 } 
-
+export async function getFxGoods(fid,sid) {
+    let res = await $axios.get("/goodslist", {
+        params: {
+            fid,
+            sid
+        }
+    })
+    if (res.code == 200 && res.list) {
+        return res.list
+    } else {
+        return [];
+    }
+}
 // 商品添加
 export async function addgoods(data){
     return await $axios.post('/goodsadd',data);

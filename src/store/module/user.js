@@ -42,6 +42,7 @@ export default {
             state.userinfo = val;
             localStorage.setItem('userinfo',JSON.stringify(val));
         },
+        // 退出登录
         EXIT(state){
             localStorage.removeItem('userinfo');
             state.userinfo = {};
@@ -84,6 +85,11 @@ export default {
                Message.error(res.msg);
            }
            console.log(res)
+        },
+        exit({commit,dispatch}){
+            commit('EXIT');
+            // 去调用头部标签栏的删除方法
+            commit('tagslist/DEL_ALL',null,{root:true})
         }
     }
 }

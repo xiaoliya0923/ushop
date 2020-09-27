@@ -8,8 +8,12 @@
             <el-header class="page-head">
                 <top></top>
             </el-header>
-            <el-main>
-                <router-view></router-view>
+            <el-main class="mains">
+                <tagslist></tagslist>
+                <div class="router">
+                    <router-view></router-view>
+                </div>
+                
             </el-main>
         </el-container>
     </el-container>
@@ -18,6 +22,7 @@
 <script>
 import left from '@/views/Layout/left'
 import top from '@/views/Layout/top'
+import tagslist from '@/views/Layout/tagslist'
 import {mapState} from 'vuex'
 export default { 
  data () {
@@ -27,7 +32,8 @@ export default {
 
  components: {
      left,
-     top
+     top,
+     tagslist
  },
     
  computed: {
@@ -55,5 +61,11 @@ export default {
 .page-head {
     background-color: #fff;
     box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.3);
+}
+.mains {
+    position: relative;
+}
+.router{
+    margin-top: 40px;
 }
 </style>
