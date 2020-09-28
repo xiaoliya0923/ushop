@@ -20,15 +20,15 @@ export async function adduser(val){
     return await $axios.post('/useradd',val);
     
 }
-
+ 
 // 管理员总数
 export async function countuser(){
-    await $axios.get('/usercount')
+    return await $axios.get('/usercount')
 }
 
 // 管理员修改
 export async function edituser(val){
-    await $axios.post('/useredit',val)
+    return await $axios.post('/useredit',val)
 }
 
 // 管理员删除
